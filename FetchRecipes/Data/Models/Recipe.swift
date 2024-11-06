@@ -35,3 +35,17 @@ struct Recipe: Identifiable, Equatable {
         self.youtubeURL = youtubeURL
     }
 }
+
+#if DEBUG
+extension Recipe {
+    static var previewData: [Recipe] {
+        guard let url = Bundle.main.url(forResource: "preview-recipes", withExtension: "json") else {
+            fatalError("failed to load from resource")
+        }
+
+        let data = try! Data(contentsOf: url)
+        let decoder = JSONDecoder()
+        return try! decoder.decode(GetRecipesResponse.self, from: data).recipes.toRecipes()
+    }
+}
+#endif

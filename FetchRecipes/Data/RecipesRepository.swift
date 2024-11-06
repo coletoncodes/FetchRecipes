@@ -25,42 +25,50 @@ final class RecipesRepo: RecipesRepository {
         }
 
         log("Fetching recipes..", .debug, .repository)
-        // Otherwise, fetch recipes from the network
         do {
+            // Fetch and map the recipes
             let recipeDTOs = try await recipesNetworkRequester.getRecipes()
-            let recipes = recipeDTOs.compactMap { dto -> Recipe? in
-                // Validate all necessary URLs
-                guard
-                    let photoURLLargeString = dto.photoURLLarge,
-                    let photoURLSmallString = dto.photoURLSmall,
-                    let sourceURLString = dto.sourceURL,
-                    let youtubeURLString = dto.youtubeURL,
-                    let photoURLLarge = URL(string: photoURLLargeString),
-                    let photoURLSmall = URL(string: photoURLSmallString),
-                    let sourceURL = URL(string: sourceURLString),
-                    let youtubeURL = URL(string: youtubeURLString)
-                else {
-                    // Skip this entry if any data is invalid (nil)
-                    return nil
-                }
-
-                return Recipe(
-                    cuisine: dto.cuisine,
-                    name: dto.name,
-                    photoURLLarge: photoURLLarge,
-                    photoURLSmall: photoURLSmall,
-                    sourceURL: sourceURL,
-                    uuid: dto.uuid,
-                    youtubeURL: youtubeURL
-                )
-            }
+            let recipes = recipeDTOs.toRecipes()
 
             // Cache the result if all recipes are valid
-            self.cachedRecipes = recipes  // Store in cache
+            self.cachedRecipes = recipes
             return recipes
         } catch {
             log("Failed to fetch recipes: \(error)", .error, .repository)
             throw error
+        }
+    }
+}
+
+extension Array where Element == RecipeDTO {
+    /// Maps `RecipeDTO` array to `[Recipe]`, filtering out any items with invalid URLs.
+    func toRecipes() -> [Recipe] {
+        self.compactMap { dto -> Recipe? in
+            // Validate all necessary URLs
+            guard
+                let photoURLLargeString = dto.photoURLLarge,
+                let photoURLSmallString = dto.photoURLSmall,
+                let sourceURLString = dto.sourceURL,
+                let youtubeURLString = dto.youtubeURL,
+                let photoURLLarge = URL(string: photoURLLargeString),
+                let photoURLSmall = URL(string: photoURLSmallString),
+                let sourceURL = URL(string: sourceURLString),
+                let youtubeURL = URL(string: youtubeURLString)
+            else {
+                // Log invalid URL if needed and skip this entry
+                log("Invalid URL found in RecipeDTO with UUID \(dto.uuid)", .error, .repository)
+                return nil
+            }
+
+            return Recipe(
+                cuisine: dto.cuisine,
+                name: dto.name,
+                photoURLLarge: photoURLLarge,
+                photoURLSmall: photoURLSmall,
+                sourceURL: sourceURL,
+                uuid: dto.uuid,
+                youtubeURL: youtubeURL
+            )
         }
     }
 }
