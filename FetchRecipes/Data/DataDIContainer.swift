@@ -50,4 +50,9 @@ extension DataContainer {
         self { RecipesNetworkRequester() }
             .cached
     }
+
+    var recipesRepository: Factory<RecipesRepository> {
+        self { RecipesRepo() }
+            .cached
+    }
 }

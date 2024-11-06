@@ -10,21 +10,21 @@ import Foundation
 struct Recipe: Identifiable, Equatable {
     let cuisine: String
     let name: String
-    let photoURLLarge, photoURLSmall: String
-    let sourceURL: String
+    let photoURLLarge, photoURLSmall: URL
+    let sourceURL: URL
     let uuid: String
-    let youtubeURL: String
+    let youtubeURL: URL
 
     var id: String { uuid }
 
     init(
         cuisine: String,
         name: String,
-        photoURLLarge: String,
-        photoURLSmall: String,
-        sourceURL: String,
+        photoURLLarge: URL,
+        photoURLSmall: URL,
+        sourceURL: URL,
         uuid: String,
-        youtubeURL: String
+        youtubeURL: URL
     ) {
         self.cuisine = cuisine
         self.name = name
