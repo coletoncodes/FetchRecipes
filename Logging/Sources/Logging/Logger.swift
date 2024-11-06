@@ -22,7 +22,14 @@ public let logger: AppLogger = AppLogger()
 
 public final class AppLogger: @unchecked Sendable {
 
-    private var destinations: [LoggerDestination] = [OSLogDestination()]
+    private(set) var destinations: [LoggerDestination]
+    
+    /// Initializes the logger with the initial destinations
+    /// - Parameter destinations: The destinations to include to the logger, defaults to include ``OSLogDestionation``
+    public init(destinations: [LoggerDestination] = [OSLogDestination()]) {
+        self.destinations = destinations
+    }
+
     private let queue = DispatchQueue(label: "com.app.logger.queue", attributes: .concurrent)
 
     public func add(_ newDestination: LoggerDestination) {

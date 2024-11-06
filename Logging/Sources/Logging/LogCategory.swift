@@ -6,7 +6,7 @@
 //
 
 /// The additional Log Category to include in log messages.
-public enum LogCategory: Sendable {
+public enum LogCategory: Sendable, Equatable {
     case `default`
     case networking
     case interactor

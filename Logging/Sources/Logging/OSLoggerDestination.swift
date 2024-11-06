@@ -9,15 +9,15 @@ import Foundation
 import OSLog
 
 /// The OS logging destination to ensure logs are submitted to the OS Log System.
-final class OSLogDestination: LoggerDestination {
+public final class OSLogDestination: LoggerDestination {
     private let logger: Logger
 
-    init() {
+    public init() {
         let subsystem = Bundle.main.bundleIdentifier ?? "Unknown Subsystem"
         self.logger = Logger(subsystem: subsystem, category: "FetchRecipesLogger")
     }
 
-    func log(
+    public func log(
         _ message: String,
         _ osLogType: OSLogType,
         _ category: LogCategory,
