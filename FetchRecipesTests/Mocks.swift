@@ -5,7 +5,9 @@
 //  Created by Coleton Gorecke on 11/6/24.
 //
 
+@testable import FetchRecipes
 import Foundation
+import Networking
 
 enum TestError: Error {
     case expected
