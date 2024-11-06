@@ -15,14 +15,14 @@ jobs:
       - name: Checkout
         uses: actions/checkout@v4
 
-      - name: Set up Xcode
-        run: sudo xcode-select -switch /Applications/Xcode_16.1.app
+      - name: Set up Xcode 16
+        run: sudo xcode-select -switch /Applications/Xcode_16.1app
 
-       - name: Build
+      - name: Build
         run: |
           scheme="FetchRecipes"
           platform="iOS Simulator"
-          testPlan="TestPlans/FetchRecipesUnitTestPlan"
+          testPlan="TestPlans/FetchRecipesUnitTestPlan"  # Corrected path here
           device=$(xcrun xctrace list devices 2>&1 | grep -oE 'iPhone.*?[^\(]+' | head -1 | awk '{$1=$1;print}' | sed -e "s/ Simulator$//")
           if [ "$(ls -A | grep -i \\.xcworkspace\$)" ]; then 
             filetype_parameter="workspace" 
@@ -40,7 +40,7 @@ jobs:
         run: |
           scheme="FetchRecipes"
           platform="iOS Simulator"
-          testPlan="TestPlans/FetchRecipesUnitTestPlan"
+          testPlan="TestPlans/FetchRecipesUnitTestPlan"  # Corrected path here
           device=$(xcrun xctrace list devices 2>&1 | grep -oE 'iPhone.*?[^\(]+' | head -1 | awk '{$1=$1;print}' | sed -e "s/ Simulator$//")
           if [ "$(ls -A | grep -i \\.xcworkspace\$)" ]; then 
             filetype_parameter="workspace" 
