@@ -8,15 +8,15 @@
 import Foundation
 
 // MARK: - GetRecipesResponse
-struct GetRecipesResponse: Decodable {
+struct GetRecipesResponse: Codable {
     let recipes: [RecipeDTO]
 }
 
 // MARK: - Recipe
-struct RecipeDTO: Decodable {
+struct RecipeDTO: Codable {
     let cuisine: String
-    let name: String?
-    let photoURLLarge, photoURLSmall: String
+    let name: String
+    let photoURLLarge, photoURLSmall: String?
     let sourceURL: String?
     let uuid: String
     let youtubeURL: String?
