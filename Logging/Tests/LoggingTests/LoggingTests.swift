@@ -1,7 +1,7 @@
 import XCTest
-@testable import Logger
+@testable import Logging
 
-final class LoggerTests: XCTestCase {
+final class LoggingTests: XCTestCase {
     func testExample() throws {
         // XCTest Documentation
         // https://developer.apple.com/documentation/xctest

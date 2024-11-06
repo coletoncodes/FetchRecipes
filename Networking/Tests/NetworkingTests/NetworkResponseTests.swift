@@ -5,7 +5,7 @@
 //  Created by Coleton Gorecke on 4/29/24.
 //
 
-@testable import NetworkingModule
+@testable import Networking
 import XCTest
 
 final class NetworkResponseTests: XCTestCase {

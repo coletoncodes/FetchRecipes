@@ -1,7 +1,7 @@
 {
   "configurations" : [
     {
-      "id" : "6C8DF249-ADFA-41E7-AFFE-27401BC9FBE4",
+      "id" : "11133E74-7633-4FEE-9AD0-45E039C2B38C",
       "name" : "Configuration 1",
       "options" : {
 
@@ -9,14 +9,21 @@
     }
   ],
   "defaultOptions" : {
-    "testTimeoutsEnabled" : true
+
   },
   "testTargets" : [
     {
       "target" : {
-        "containerPath" : "container:FetchRecipes.xcodeproj",
-        "identifier" : "26D16B5E2CDBD10E00B9F513",
-        "name" : "NetworkingModuleTests"
+        "containerPath" : "container:Networking",
+        "identifier" : "NetworkingTests",
+        "name" : "NetworkingTests"
+      }
+    },
+    {
+      "target" : {
+        "containerPath" : "container:Logging",
+        "identifier" : "LoggingTests",
+        "name" : "LoggingTests"
       }
     },
     {

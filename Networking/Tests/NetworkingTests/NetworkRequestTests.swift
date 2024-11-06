@@ -5,7 +5,7 @@
 //  Created by Coleton Gorecke on 4/25/24.
 //
 
-@testable import NetworkingModule
+@testable import Networking
 import Foundation
 import XCTest
 
