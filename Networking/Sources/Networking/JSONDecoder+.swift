@@ -14,17 +14,17 @@ extension JSONDecoder {
     ///   - data: The data to use for decoding
     /// - Returns: The decoded data
     /// - Throws: A ``DecodingError`` if decoding fails, or the raw error if is not a   ``DecodingError`` type
-    public func decodeResponse<T: Decodable>(
+    func decodeResponse<T: Decodable>(
         _ type: T.Type,
         from data: Data
     ) throws -> T {
         do {
             return try self.decode(type, from: data)
         } catch let error as DecodingError {
-            log("Failed to decode type of \(type) with error: \(error)", .error, .networking)
+            log("Failed to decode type of \(type) with error: \(error)", .error)
             throw error
         } catch {
-            log("Unexpected error during decoding: \(error)", .error, .networking)
+            log("Unexpected error during decoding: \(error)", .error)
             throw error
         }
     }

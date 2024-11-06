@@ -83,7 +83,7 @@ open class NetworkRequester: NetworkRequesting {
         
         guard let httpResponse = response as? HTTPURLResponse else {
             let logStr = "Failed to cast response as HTTPURLResponse"
-            log(logStr, .error, .networking)
+            log(logStr, .error)
             throw NetworkRequesterError.nonHTTPURLResponse(response)
         }
         return try await responseHandler.handleResponse(statusCode: httpResponse.statusCode, responseData: responseData)
@@ -101,7 +101,7 @@ open class NetworkRequester: NetworkRequesting {
                 if let jsonObject = try? JSONSerialization.jsonObject(with: encodedData, options: []),
                    let prettyPrintedData = try? JSONSerialization.data(withJSONObject: jsonObject, options: .prettyPrinted),
                    let prettyPrintedString = String(data: prettyPrintedData, encoding: .utf8) {
-                    log("Encoded JSON body: \n\(prettyPrintedString)\n", .debug, .networking)
+                    log("Encoded JSON body: \n\(prettyPrintedString)\n", .debug)
                 }
                 return encodedData
             } catch {

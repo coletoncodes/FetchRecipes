@@ -1,0 +1,31 @@
+{
+  "configurations" : [
+    {
+      "id" : "6C8DF249-ADFA-41E7-AFFE-27401BC9FBE4",
+      "name" : "Configuration 1",
+      "options" : {
+
+      }
+    }
+  ],
+  "defaultOptions" : {
+    "testTimeoutsEnabled" : true
+  },
+  "testTargets" : [
+    {
+      "target" : {
+        "containerPath" : "container:FetchRecipes.xcodeproj",
+        "identifier" : "26D16B5E2CDBD10E00B9F513",
+        "name" : "NetworkingModuleTests"
+      }
+    },
+    {
+      "target" : {
+        "containerPath" : "container:FetchRecipes.xcodeproj",
+        "identifier" : "2628FCD82CDBCA6F00BC1D5A",
+        "name" : "FetchRecipesTests"
+      }
+    }
+  ],
+  "version" : 1
+}

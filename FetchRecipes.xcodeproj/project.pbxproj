@@ -7,9 +7,9 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		26D16B602CDBD10E00B9F513 /* NetworkingModule.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 26D16B582CDBD10D00B9F513 /* NetworkingModule.framework */; };
-		26D16B6B2CDBD10E00B9F513 /* NetworkingModule.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 26D16B582CDBD10D00B9F513 /* NetworkingModule.framework */; };
-		26D16B6C2CDBD10E00B9F513 /* NetworkingModule.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 26D16B582CDBD10D00B9F513 /* NetworkingModule.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
+		26D16B812CDBD22400B9F513 /* UnitTestPlan.xctestplan in Resources */ = {isa = PBXBuildFile; fileRef = 26D16B802CDBD22400B9F513 /* UnitTestPlan.xctestplan */; };
+		26D16B872CDBD46100B9F513 /* Networking in Frameworks */ = {isa = PBXBuildFile; productRef = 26D16B862CDBD46100B9F513 /* Networking */; };
+		26D16B8D2CDBD76000B9F513 /* Logging in Frameworks */ = {isa = PBXBuildFile; productRef = 26D16B8C2CDBD76000B9F513 /* Logging */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -27,27 +27,6 @@
 			remoteGlobalIDString = 2628FCC82CDBCA6D00BC1D5A;
 			remoteInfo = FetchRecipes;
 		};
-		26D16B612CDBD10E00B9F513 /* PBXContainerItemProxy */ = {
-			isa = PBXContainerItemProxy;
-			containerPortal = 2628FCC12CDBCA6D00BC1D5A /* Project object */;
-			proxyType = 1;
-			remoteGlobalIDString = 26D16B572CDBD10D00B9F513;
-			remoteInfo = NetworkingModule;
-		};
-		26D16B632CDBD10E00B9F513 /* PBXContainerItemProxy */ = {
-			isa = PBXContainerItemProxy;
-			containerPortal = 2628FCC12CDBCA6D00BC1D5A /* Project object */;
-			proxyType = 1;
-			remoteGlobalIDString = 2628FCC82CDBCA6D00BC1D5A;
-			remoteInfo = FetchRecipes;
-		};
-		26D16B692CDBD10E00B9F513 /* PBXContainerItemProxy */ = {
-			isa = PBXContainerItemProxy;
-			containerPortal = 2628FCC12CDBCA6D00BC1D5A /* Project object */;
-			proxyType = 1;
-			remoteGlobalIDString = 26D16B572CDBD10D00B9F513;
-			remoteInfo = NetworkingModule;
-		};
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXCopyFilesBuildPhase section */
@@ -57,7 +36,6 @@
 			dstPath = "";
 			dstSubfolderSpec = 10;
 			files = (
-				26D16B6C2CDBD10E00B9F513 /* NetworkingModule.framework in Embed Frameworks */,
 			);
 			name = "Embed Frameworks";
 			runOnlyForDeploymentPostprocessing = 0;
@@ -68,39 +46,10 @@
 		2628FCC92CDBCA6D00BC1D5A /* FetchRecipes.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = FetchRecipes.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		2628FCD92CDBCA6F00BC1D5A /* FetchRecipesTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = FetchRecipesTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		2628FCE32CDBCA6F00BC1D5A /* FetchRecipesUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = FetchRecipesUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
-		26D16B582CDBD10D00B9F513 /* NetworkingModule.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = NetworkingModule.framework; sourceTree = BUILT_PRODUCTS_DIR; };
-		26D16B5F2CDBD10E00B9F513 /* NetworkingModuleTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = NetworkingModuleTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		26D16B802CDBD22400B9F513 /* UnitTestPlan.xctestplan */ = {isa = PBXFileReference; lastKnownFileType = text; path = UnitTestPlan.xctestplan; sourceTree = "<group>"; };
+		26D16B842CDBD43500B9F513 /* Networking */ = {isa = PBXFileReference; lastKnownFileType = wrapper; path = Networking; sourceTree = "<group>"; };
+		26D16B8A2CDBD72400B9F513 /* Logging */ = {isa = PBXFileReference; lastKnownFileType = wrapper; path = Logging; sourceTree = "<group>"; };
 /* End PBXFileReference section */
-
-/* Begin PBXFileSystemSynchronizedBuildFileExceptionSet section */
-		26D16B6D2CDBD10E00B9F513 /* Exceptions for "NetworkingModule" folder in "NetworkingModule" target */ = {
-			isa = PBXFileSystemSynchronizedBuildFileExceptionSet;
-			membershipExceptions = (
-				"JSONDecoder+.swift",
-				NetworkRequest.swift,
-				NetworkRequesterError.swift,
-				NetworkRequesting.swift,
-				README.md,
-				URLSessionProtocol.swift,
-			);
-			publicHeaders = (
-				NetworkingModule.h,
-			);
-			target = 26D16B572CDBD10D00B9F513 /* NetworkingModule */;
-		};
-		26D16B752CDBD11E00B9F513 /* Exceptions for "NetworkingModule" folder in "FetchRecipes" target */ = {
-			isa = PBXFileSystemSynchronizedBuildFileExceptionSet;
-			membershipExceptions = (
-				"JSONDecoder+.swift",
-				NetworkRequest.swift,
-				NetworkRequesterError.swift,
-				NetworkRequesting.swift,
-				README.md,
-				URLSessionProtocol.swift,
-			);
-			target = 2628FCC82CDBCA6D00BC1D5A /* FetchRecipes */;
-		};
-/* End PBXFileSystemSynchronizedBuildFileExceptionSet section */
 
 /* Begin PBXFileSystemSynchronizedRootGroup section */
 		2628FCCB2CDBCA6D00BC1D5A /* FetchRecipes */ = {
@@ -118,20 +67,6 @@
 			path = FetchRecipesUITests;
 			sourceTree = "<group>";
 		};
-		26D16B592CDBD10D00B9F513 /* NetworkingModule */ = {
-			isa = PBXFileSystemSynchronizedRootGroup;
-			exceptions = (
-				26D16B752CDBD11E00B9F513 /* Exceptions for "NetworkingModule" folder in "FetchRecipes" target */,
-				26D16B6D2CDBD10E00B9F513 /* Exceptions for "NetworkingModule" folder in "NetworkingModule" target */,
-			);
-			path = NetworkingModule;
-			sourceTree = "<group>";
-		};
-		26D16B652CDBD10E00B9F513 /* NetworkingModuleTests */ = {
-			isa = PBXFileSystemSynchronizedRootGroup;
-			path = NetworkingModuleTests;
-			sourceTree = "<group>";
-		};
 /* End PBXFileSystemSynchronizedRootGroup section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -139,7 +74,8 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				26D16B6B2CDBD10E00B9F513 /* NetworkingModule.framework in Frameworks */,
+				26D16B8D2CDBD76000B9F513 /* Logging in Frameworks */,
+				26D16B872CDBD46100B9F513 /* Networking in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -157,32 +93,18 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
-		26D16B552CDBD10D00B9F513 /* Frameworks */ = {
-			isa = PBXFrameworksBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
-		26D16B5C2CDBD10E00B9F513 /* Frameworks */ = {
-			isa = PBXFrameworksBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-				26D16B602CDBD10E00B9F513 /* NetworkingModule.framework in Frameworks */,
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
 		2628FCC02CDBCA6D00BC1D5A = {
 			isa = PBXGroup;
 			children = (
+				26D16B8A2CDBD72400B9F513 /* Logging */,
+				26D16B842CDBD43500B9F513 /* Networking */,
+				26D16B802CDBD22400B9F513 /* UnitTestPlan.xctestplan */,
 				2628FCCB2CDBCA6D00BC1D5A /* FetchRecipes */,
 				2628FCDC2CDBCA6F00BC1D5A /* FetchRecipesTests */,
 				2628FCE62CDBCA6F00BC1D5A /* FetchRecipesUITests */,
-				26D16B592CDBD10D00B9F513 /* NetworkingModule */,
-				26D16B652CDBD10E00B9F513 /* NetworkingModuleTests */,
 				2628FCCA2CDBCA6D00BC1D5A /* Products */,
 			);
 			sourceTree = "<group>";
@@ -193,23 +115,11 @@
 				2628FCC92CDBCA6D00BC1D5A /* FetchRecipes.app */,
 				2628FCD92CDBCA6F00BC1D5A /* FetchRecipesTests.xctest */,
 				2628FCE32CDBCA6F00BC1D5A /* FetchRecipesUITests.xctest */,
-				26D16B582CDBD10D00B9F513 /* NetworkingModule.framework */,
-				26D16B5F2CDBD10E00B9F513 /* NetworkingModuleTests.xctest */,
 			);
 			name = Products;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
-
-/* Begin PBXHeadersBuildPhase section */
-		26D16B532CDBD10D00B9F513 /* Headers */ = {
-			isa = PBXHeadersBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
-/* End PBXHeadersBuildPhase section */
 
 /* Begin PBXNativeTarget section */
 		2628FCC82CDBCA6D00BC1D5A /* FetchRecipes */ = {
@@ -224,13 +134,14 @@
 			buildRules = (
 			);
 			dependencies = (
-				26D16B6A2CDBD10E00B9F513 /* PBXTargetDependency */,
 			);
 			fileSystemSynchronizedGroups = (
 				2628FCCB2CDBCA6D00BC1D5A /* FetchRecipes */,
 			);
 			name = FetchRecipes;
 			packageProductDependencies = (
+				26D16B862CDBD46100B9F513 /* Networking */,
+				26D16B8C2CDBD76000B9F513 /* Logging */,
 			);
 			productName = FetchRecipes;
 			productReference = 2628FCC92CDBCA6D00BC1D5A /* FetchRecipes.app */;
@@ -282,53 +193,6 @@
 			productReference = 2628FCE32CDBCA6F00BC1D5A /* FetchRecipesUITests.xctest */;
 			productType = "com.apple.product-type.bundle.ui-testing";
 		};
-		26D16B572CDBD10D00B9F513 /* NetworkingModule */ = {
-			isa = PBXNativeTarget;
-			buildConfigurationList = 26D16B6E2CDBD10E00B9F513 /* Build configuration list for PBXNativeTarget "NetworkingModule" */;
-			buildPhases = (
-				26D16B532CDBD10D00B9F513 /* Headers */,
-				26D16B542CDBD10D00B9F513 /* Sources */,
-				26D16B552CDBD10D00B9F513 /* Frameworks */,
-				26D16B562CDBD10D00B9F513 /* Resources */,
-			);
-			buildRules = (
-			);
-			dependencies = (
-			);
-			fileSystemSynchronizedGroups = (
-				26D16B592CDBD10D00B9F513 /* NetworkingModule */,
-			);
-			name = NetworkingModule;
-			packageProductDependencies = (
-			);
-			productName = NetworkingModule;
-			productReference = 26D16B582CDBD10D00B9F513 /* NetworkingModule.framework */;
-			productType = "com.apple.product-type.framework";
-		};
-		26D16B5E2CDBD10E00B9F513 /* NetworkingModuleTests */ = {
-			isa = PBXNativeTarget;
-			buildConfigurationList = 26D16B722CDBD10E00B9F513 /* Build configuration list for PBXNativeTarget "NetworkingModuleTests" */;
-			buildPhases = (
-				26D16B5B2CDBD10E00B9F513 /* Sources */,
-				26D16B5C2CDBD10E00B9F513 /* Frameworks */,
-				26D16B5D2CDBD10E00B9F513 /* Resources */,
-			);
-			buildRules = (
-			);
-			dependencies = (
-				26D16B622CDBD10E00B9F513 /* PBXTargetDependency */,
-				26D16B642CDBD10E00B9F513 /* PBXTargetDependency */,
-			);
-			fileSystemSynchronizedGroups = (
-				26D16B652CDBD10E00B9F513 /* NetworkingModuleTests */,
-			);
-			name = NetworkingModuleTests;
-			packageProductDependencies = (
-			);
-			productName = NetworkingModuleTests;
-			productReference = 26D16B5F2CDBD10E00B9F513 /* NetworkingModuleTests.xctest */;
-			productType = "com.apple.product-type.bundle.unit-test";
-		};
 /* End PBXNativeTarget section */
 
 /* Begin PBXProject section */
@@ -350,13 +214,6 @@
 						CreatedOnToolsVersion = 16.1;
 						TestTargetID = 2628FCC82CDBCA6D00BC1D5A;
 					};
-					26D16B572CDBD10D00B9F513 = {
-						CreatedOnToolsVersion = 16.1;
-					};
-					26D16B5E2CDBD10E00B9F513 = {
-						CreatedOnToolsVersion = 16.1;
-						TestTargetID = 2628FCC82CDBCA6D00BC1D5A;
-					};
 				};
 			};
 			buildConfigurationList = 2628FCC42CDBCA6D00BC1D5A /* Build configuration list for PBXProject "FetchRecipes" */;
@@ -368,6 +225,10 @@
 			);
 			mainGroup = 2628FCC02CDBCA6D00BC1D5A;
 			minimizedProjectReferenceProxies = 1;
+			packageReferences = (
+				26D16B852CDBD46100B9F513 /* XCLocalSwiftPackageReference "Networking" */,
+				26D16B8B2CDBD76000B9F513 /* XCLocalSwiftPackageReference "Logging" */,
+			);
 			preferredProjectObjectVersion = 77;
 			productRefGroup = 2628FCCA2CDBCA6D00BC1D5A /* Products */;
 			projectDirPath = "";
@@ -376,8 +237,6 @@
 				2628FCC82CDBCA6D00BC1D5A /* FetchRecipes */,
 				2628FCD82CDBCA6F00BC1D5A /* FetchRecipesTests */,
 				2628FCE22CDBCA6F00BC1D5A /* FetchRecipesUITests */,
-				26D16B572CDBD10D00B9F513 /* NetworkingModule */,
-				26D16B5E2CDBD10E00B9F513 /* NetworkingModuleTests */,
 			);
 		};
 /* End PBXProject section */
@@ -387,6 +246,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				26D16B812CDBD22400B9F513 /* UnitTestPlan.xctestplan in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -398,20 +258,6 @@
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 		2628FCE12CDBCA6F00BC1D5A /* Resources */ = {
-			isa = PBXResourcesBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
-		26D16B562CDBD10D00B9F513 /* Resources */ = {
-			isa = PBXResourcesBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
-		26D16B5D2CDBD10E00B9F513 /* Resources */ = {
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
@@ -442,20 +288,6 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
-		26D16B542CDBD10D00B9F513 /* Sources */ = {
-			isa = PBXSourcesBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
-		26D16B5B2CDBD10E00B9F513 /* Sources */ = {
-			isa = PBXSourcesBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
 /* End PBXSourcesBuildPhase section */
 
 /* Begin PBXTargetDependency section */
@@ -468,21 +300,6 @@
 			isa = PBXTargetDependency;
 			target = 2628FCC82CDBCA6D00BC1D5A /* FetchRecipes */;
 			targetProxy = 2628FCE42CDBCA6F00BC1D5A /* PBXContainerItemProxy */;
-		};
-		26D16B622CDBD10E00B9F513 /* PBXTargetDependency */ = {
-			isa = PBXTargetDependency;
-			target = 26D16B572CDBD10D00B9F513 /* NetworkingModule */;
-			targetProxy = 26D16B612CDBD10E00B9F513 /* PBXContainerItemProxy */;
-		};
-		26D16B642CDBD10E00B9F513 /* PBXTargetDependency */ = {
-			isa = PBXTargetDependency;
-			target = 2628FCC82CDBCA6D00BC1D5A /* FetchRecipes */;
-			targetProxy = 26D16B632CDBD10E00B9F513 /* PBXContainerItemProxy */;
-		};
-		26D16B6A2CDBD10E00B9F513 /* PBXTargetDependency */ = {
-			isa = PBXTargetDependency;
-			target = 26D16B572CDBD10D00B9F513 /* NetworkingModule */;
-			targetProxy = 26D16B692CDBD10E00B9F513 /* PBXContainerItemProxy */;
 		};
 /* End PBXTargetDependency section */
 
@@ -766,114 +583,6 @@
 			};
 			name = Release;
 		};
-		26D16B6F2CDBD10E00B9F513 /* Debug */ = {
-			isa = XCBuildConfiguration;
-			buildSettings = {
-				BUILD_LIBRARY_FOR_DISTRIBUTION = YES;
-				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 1;
-				DEFINES_MODULE = YES;
-				DEVELOPMENT_TEAM = 435ZY68D35;
-				DYLIB_COMPATIBILITY_VERSION = 1;
-				DYLIB_CURRENT_VERSION = 1;
-				DYLIB_INSTALL_NAME_BASE = "@rpath";
-				ENABLE_MODULE_VERIFIER = YES;
-				GENERATE_INFOPLIST_FILE = YES;
-				INFOPLIST_KEY_NSHumanReadableCopyright = "";
-				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
-				IPHONEOS_DEPLOYMENT_TARGET = 16.0;
-				LD_RUNPATH_SEARCH_PATHS = (
-					"$(inherited)",
-					"@executable_path/Frameworks",
-					"@loader_path/Frameworks",
-				);
-				MARKETING_VERSION = 1.0;
-				MODULE_VERIFIER_SUPPORTED_LANGUAGES = "objective-c objective-c++";
-				MODULE_VERIFIER_SUPPORTED_LANGUAGE_STANDARDS = "gnu17 gnu++20";
-				PRODUCT_BUNDLE_IDENTIFIER = coletoncodes.NetworkingModule;
-				PRODUCT_NAME = "$(TARGET_NAME:c99extidentifier)";
-				SKIP_INSTALL = YES;
-				SWIFT_EMIT_LOC_STRINGS = YES;
-				SWIFT_INSTALL_OBJC_HEADER = NO;
-				SWIFT_VERSION = 5.0;
-				TARGETED_DEVICE_FAMILY = "1,2";
-				VERSIONING_SYSTEM = "apple-generic";
-				VERSION_INFO_PREFIX = "";
-			};
-			name = Debug;
-		};
-		26D16B702CDBD10E00B9F513 /* Release */ = {
-			isa = XCBuildConfiguration;
-			buildSettings = {
-				BUILD_LIBRARY_FOR_DISTRIBUTION = YES;
-				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 1;
-				DEFINES_MODULE = YES;
-				DEVELOPMENT_TEAM = 435ZY68D35;
-				DYLIB_COMPATIBILITY_VERSION = 1;
-				DYLIB_CURRENT_VERSION = 1;
-				DYLIB_INSTALL_NAME_BASE = "@rpath";
-				ENABLE_MODULE_VERIFIER = YES;
-				GENERATE_INFOPLIST_FILE = YES;
-				INFOPLIST_KEY_NSHumanReadableCopyright = "";
-				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
-				IPHONEOS_DEPLOYMENT_TARGET = 16.0;
-				LD_RUNPATH_SEARCH_PATHS = (
-					"$(inherited)",
-					"@executable_path/Frameworks",
-					"@loader_path/Frameworks",
-				);
-				MARKETING_VERSION = 1.0;
-				MODULE_VERIFIER_SUPPORTED_LANGUAGES = "objective-c objective-c++";
-				MODULE_VERIFIER_SUPPORTED_LANGUAGE_STANDARDS = "gnu17 gnu++20";
-				PRODUCT_BUNDLE_IDENTIFIER = coletoncodes.NetworkingModule;
-				PRODUCT_NAME = "$(TARGET_NAME:c99extidentifier)";
-				SKIP_INSTALL = YES;
-				SWIFT_EMIT_LOC_STRINGS = YES;
-				SWIFT_INSTALL_OBJC_HEADER = NO;
-				SWIFT_VERSION = 5.0;
-				TARGETED_DEVICE_FAMILY = "1,2";
-				VERSIONING_SYSTEM = "apple-generic";
-				VERSION_INFO_PREFIX = "";
-			};
-			name = Release;
-		};
-		26D16B732CDBD10E00B9F513 /* Debug */ = {
-			isa = XCBuildConfiguration;
-			buildSettings = {
-				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 1;
-				DEVELOPMENT_TEAM = 435ZY68D35;
-				GENERATE_INFOPLIST_FILE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 16.0;
-				MARKETING_VERSION = 1.0;
-				PRODUCT_BUNDLE_IDENTIFIER = coletoncodes.NetworkingModuleTests;
-				PRODUCT_NAME = "$(TARGET_NAME)";
-				SWIFT_EMIT_LOC_STRINGS = NO;
-				SWIFT_VERSION = 5.0;
-				TARGETED_DEVICE_FAMILY = "1,2";
-				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/FetchRecipes.app/$(BUNDLE_EXECUTABLE_FOLDER_PATH)/FetchRecipes";
-			};
-			name = Debug;
-		};
-		26D16B742CDBD10E00B9F513 /* Release */ = {
-			isa = XCBuildConfiguration;
-			buildSettings = {
-				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 1;
-				DEVELOPMENT_TEAM = 435ZY68D35;
-				GENERATE_INFOPLIST_FILE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 16.0;
-				MARKETING_VERSION = 1.0;
-				PRODUCT_BUNDLE_IDENTIFIER = coletoncodes.NetworkingModuleTests;
-				PRODUCT_NAME = "$(TARGET_NAME)";
-				SWIFT_EMIT_LOC_STRINGS = NO;
-				SWIFT_VERSION = 5.0;
-				TARGETED_DEVICE_FAMILY = "1,2";
-				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/FetchRecipes.app/$(BUNDLE_EXECUTABLE_FOLDER_PATH)/FetchRecipes";
-			};
-			name = Release;
-		};
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
@@ -913,25 +622,29 @@
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
 		};
-		26D16B6E2CDBD10E00B9F513 /* Build configuration list for PBXNativeTarget "NetworkingModule" */ = {
-			isa = XCConfigurationList;
-			buildConfigurations = (
-				26D16B6F2CDBD10E00B9F513 /* Debug */,
-				26D16B702CDBD10E00B9F513 /* Release */,
-			);
-			defaultConfigurationIsVisible = 0;
-			defaultConfigurationName = Release;
-		};
-		26D16B722CDBD10E00B9F513 /* Build configuration list for PBXNativeTarget "NetworkingModuleTests" */ = {
-			isa = XCConfigurationList;
-			buildConfigurations = (
-				26D16B732CDBD10E00B9F513 /* Debug */,
-				26D16B742CDBD10E00B9F513 /* Release */,
-			);
-			defaultConfigurationIsVisible = 0;
-			defaultConfigurationName = Release;
-		};
 /* End XCConfigurationList section */
+
+/* Begin XCLocalSwiftPackageReference section */
+		26D16B852CDBD46100B9F513 /* XCLocalSwiftPackageReference "Networking" */ = {
+			isa = XCLocalSwiftPackageReference;
+			relativePath = Networking;
+		};
+		26D16B8B2CDBD76000B9F513 /* XCLocalSwiftPackageReference "Logging" */ = {
+			isa = XCLocalSwiftPackageReference;
+			relativePath = Logging;
+		};
+/* End XCLocalSwiftPackageReference section */
+
+/* Begin XCSwiftPackageProductDependency section */
+		26D16B862CDBD46100B9F513 /* Networking */ = {
+			isa = XCSwiftPackageProductDependency;
+			productName = Networking;
+		};
+		26D16B8C2CDBD76000B9F513 /* Logging */ = {
+			isa = XCSwiftPackageProductDependency;
+			productName = Logging;
+		};
+/* End XCSwiftPackageProductDependency section */
 	};
 	rootObject = 2628FCC12CDBCA6D00BC1D5A /* Project object */;
 }

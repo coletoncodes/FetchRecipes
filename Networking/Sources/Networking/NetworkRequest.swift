@@ -32,7 +32,7 @@ public protocol NetworkRequest {
 }
 
 /// Represents a single HTTP header, used in network requests.
-public struct NetworkHeader: Equatable {
+public struct NetworkHeader: Equatable, Sendable {
     public let key: String
     public let value: String
     
@@ -78,20 +78,20 @@ public extension NetworkRequest {
     func urlRequest(with body: Data? = nil) throws -> URLRequest {
         guard let url = URL(string: path) else {
             let logStr = "Failed to build url from: \(path)"
-            log(logStr, .error, .networking)
+            log(logStr, .error)
             throw NetworkRequestError.invalidRequestURL(logStr)
         }
         
-        log("Performing request to URL: \(url)", .debug, .networking)
+        log("Performing request to URL: \(url)", .debug)
         var request = URLRequest(url: url)
         request.httpMethod = method.rawValue
-        log("HTTPMethod: \(method.rawValue)", .debug, .networking)
+        log("HTTPMethod: \(method.rawValue)", .debug)
         for header in headers {
             request.addValue(header.value, forHTTPHeaderField: header.key)
         }
         
         if let headers = request.allHTTPHeaderFields {
-            log("Request Headers: \(headers.prettyPrintedHeaders())", .debug, .networking)
+            log("Request Headers: \(headers.prettyPrintedHeaders())", .debug)
         }
         
         if let body = body {
