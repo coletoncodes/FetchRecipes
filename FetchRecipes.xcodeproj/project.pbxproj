@@ -6,6 +6,12 @@
 	objectVersion = 77;
 	objects = {
 
+/* Begin PBXBuildFile section */
+		26D16B872CDBD46100B9F513 /* Networking in Frameworks */ = {isa = PBXBuildFile; productRef = 26D16B862CDBD46100B9F513 /* Networking */; };
+		26D16B8D2CDBD76000B9F513 /* Logging in Frameworks */ = {isa = PBXBuildFile; productRef = 26D16B8C2CDBD76000B9F513 /* Logging */; };
+		26D16B8F2CDBDA6700B9F513 /* NetworkingUnitTestPlan.xctestplan in Resources */ = {isa = PBXBuildFile; fileRef = 26D16B8E2CDBDA6700B9F513 /* NetworkingUnitTestPlan.xctestplan */; };
+/* End PBXBuildFile section */
+
 /* Begin PBXContainerItemProxy section */
 		2628FCDA2CDBCA6F00BC1D5A /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
@@ -23,10 +29,27 @@
 		};
 /* End PBXContainerItemProxy section */
 
+/* Begin PBXCopyFilesBuildPhase section */
+		26D16B712CDBD10E00B9F513 /* Embed Frameworks */ = {
+			isa = PBXCopyFilesBuildPhase;
+			buildActionMask = 2147483647;
+			dstPath = "";
+			dstSubfolderSpec = 10;
+			files = (
+			);
+			name = "Embed Frameworks";
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXCopyFilesBuildPhase section */
+
 /* Begin PBXFileReference section */
 		2628FCC92CDBCA6D00BC1D5A /* FetchRecipes.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = FetchRecipes.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		2628FCD92CDBCA6F00BC1D5A /* FetchRecipesTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = FetchRecipesTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		2628FCE32CDBCA6F00BC1D5A /* FetchRecipesUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = FetchRecipesUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		26D16B842CDBD43500B9F513 /* Networking */ = {isa = PBXFileReference; lastKnownFileType = wrapper; path = Networking; sourceTree = "<group>"; };
+		26D16B8A2CDBD72400B9F513 /* Logging */ = {isa = PBXFileReference; lastKnownFileType = wrapper; path = Logging; sourceTree = "<group>"; };
+		26D16B8E2CDBDA6700B9F513 /* NetworkingUnitTestPlan.xctestplan */ = {isa = PBXFileReference; lastKnownFileType = text; path = NetworkingUnitTestPlan.xctestplan; sourceTree = "<group>"; };
+		26D16B912CDBDB4200B9F513 /* FetchRecipesUnitTestPlan.xctestplan */ = {isa = PBXFileReference; lastKnownFileType = text; path = FetchRecipesUnitTestPlan.xctestplan; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFileSystemSynchronizedRootGroup section */
@@ -52,6 +75,8 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				26D16B8D2CDBD76000B9F513 /* Logging in Frameworks */,
+				26D16B872CDBD46100B9F513 /* Networking in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -75,6 +100,9 @@
 		2628FCC02CDBCA6D00BC1D5A = {
 			isa = PBXGroup;
 			children = (
+				26D16B902CDBDAC000B9F513 /* TestPlans */,
+				26D16B8A2CDBD72400B9F513 /* Logging */,
+				26D16B842CDBD43500B9F513 /* Networking */,
 				2628FCCB2CDBCA6D00BC1D5A /* FetchRecipes */,
 				2628FCDC2CDBCA6F00BC1D5A /* FetchRecipesTests */,
 				2628FCE62CDBCA6F00BC1D5A /* FetchRecipesUITests */,
@@ -92,6 +120,15 @@
 			name = Products;
 			sourceTree = "<group>";
 		};
+		26D16B902CDBDAC000B9F513 /* TestPlans */ = {
+			isa = PBXGroup;
+			children = (
+				26D16B8E2CDBDA6700B9F513 /* NetworkingUnitTestPlan.xctestplan */,
+				26D16B912CDBDB4200B9F513 /* FetchRecipesUnitTestPlan.xctestplan */,
+			);
+			path = TestPlans;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -102,6 +139,7 @@
 				2628FCC52CDBCA6D00BC1D5A /* Sources */,
 				2628FCC62CDBCA6D00BC1D5A /* Frameworks */,
 				2628FCC72CDBCA6D00BC1D5A /* Resources */,
+				26D16B712CDBD10E00B9F513 /* Embed Frameworks */,
 			);
 			buildRules = (
 			);
@@ -112,6 +150,8 @@
 			);
 			name = FetchRecipes;
 			packageProductDependencies = (
+				26D16B862CDBD46100B9F513 /* Networking */,
+				26D16B8C2CDBD76000B9F513 /* Logging */,
 			);
 			productName = FetchRecipes;
 			productReference = 2628FCC92CDBCA6D00BC1D5A /* FetchRecipes.app */;
@@ -195,6 +235,10 @@
 			);
 			mainGroup = 2628FCC02CDBCA6D00BC1D5A;
 			minimizedProjectReferenceProxies = 1;
+			packageReferences = (
+				26D16B852CDBD46100B9F513 /* XCLocalSwiftPackageReference "Networking" */,
+				26D16B8B2CDBD76000B9F513 /* XCLocalSwiftPackageReference "Logging" */,
+			);
 			preferredProjectObjectVersion = 77;
 			productRefGroup = 2628FCCA2CDBCA6D00BC1D5A /* Products */;
 			projectDirPath = "";
@@ -212,6 +256,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				26D16B8F2CDBDA6700B9F513 /* NetworkingUnitTestPlan.xctestplan in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -588,6 +633,28 @@
 			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
+
+/* Begin XCLocalSwiftPackageReference section */
+		26D16B852CDBD46100B9F513 /* XCLocalSwiftPackageReference "Networking" */ = {
+			isa = XCLocalSwiftPackageReference;
+			relativePath = Networking;
+		};
+		26D16B8B2CDBD76000B9F513 /* XCLocalSwiftPackageReference "Logging" */ = {
+			isa = XCLocalSwiftPackageReference;
+			relativePath = Logging;
+		};
+/* End XCLocalSwiftPackageReference section */
+
+/* Begin XCSwiftPackageProductDependency section */
+		26D16B862CDBD46100B9F513 /* Networking */ = {
+			isa = XCSwiftPackageProductDependency;
+			productName = Networking;
+		};
+		26D16B8C2CDBD76000B9F513 /* Logging */ = {
+			isa = XCSwiftPackageProductDependency;
+			productName = Logging;
+		};
+/* End XCSwiftPackageProductDependency section */
 	};
 	rootObject = 2628FCC12CDBCA6D00BC1D5A /* Project object */;
 }
