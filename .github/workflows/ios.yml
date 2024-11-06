@@ -9,7 +9,7 @@ on:
 jobs:
   build:
     name: Build, Test, and Report Coverage
-    runs-on: macos-13
+    runs-on: macos-15
 
     steps:
       - name: Checkout
