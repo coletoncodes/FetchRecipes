@@ -106,7 +106,7 @@ fileprivate extension Dictionary where Key == String, Value == String {
     /// Formats the dictionary into a pretty-printed key-value pair string.
     func prettyPrintedHeaders() -> String {
         self.map { "\($0.key): \($0.value)" }
-            .sorted() // Optional: Sorts the headers alphabetically by key for easier reading.
+            .sorted()
             .joined(separator: "\n")
     }
 }
