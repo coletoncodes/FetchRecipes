@@ -12,4 +12,7 @@
 
 ### External Code and Dependencies: Did you use any external code, libraries, or dependencies?
 
+- [Factory](git@github.com:hmlongco/Factory.git)
+    - A new approach to Container-Based Dependency Injection for Swift and SwiftUI.
+
 ### Additional Information: Is there anything else we should know? Feel free to share any insights or constraints you encountered.
