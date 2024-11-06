@@ -30,7 +30,7 @@ final class RecipesResponseHandlerTests: XCTestCase {
         let mockRecipe = RecipeDTO(cuisine: "Italian", name: "Pizza", photoURLLarge: "https://example.com/large.jpg", photoURLSmall: "https://example.com/small.jpg", sourceURL:  "https://example.com", uuid: "1", youtubeURL: "https://youtube.com/video")
         let mockRecipeResponse = GetRecipesResponse(recipes: [mockRecipe])
 
-        let mockRecipeData = try JSONEncoder().encode(mockRecipe)
+        let mockRecipeData = try JSONEncoder().encode(mockRecipeResponse)
 
         mockDecoder.decodeClosure = { data in
             XCTAssertEqual(data, mockRecipeData)
@@ -82,6 +82,33 @@ final class RecipesResponseHandlerTests: XCTestCase {
             XCTAssertEqual(recipe?.youtubeURL, mockRecipe.youtubeURL)
         default:
             XCTFail("Expected a successful response.")
+        }
+    }
+
+    func testSuccessResponse_DecodingFailure() async throws {
+        let mockRecipe = RecipeDTO(cuisine: "Italian", name: "Pizza", photoURLLarge: "https://example.com/large.jpg", photoURLSmall: "https://example.com/small.jpg", sourceURL:  "https://example.com", uuid: "1", youtubeURL: "https://youtube.com/video")
+        let mockRecipeResponse = GetRecipesResponse(recipes: [mockRecipe])
+        let mockRecipeData = try JSONEncoder().encode(mockRecipeResponse)
+
+        // Configure the mock decoder to throw a decoding error when trying to decode the error response
+        mockDecoder.decodeClosure = { _ in
+            throw NetworkRequesterError.decodingError("Failed to decode success response")
+        }
+
+        do {
+            // Attempt to handle response and expect a decoding error
+            let statusCode = 200
+            _ = try await handler.handleResponse(statusCode: statusCode, responseData: mockRecipeData)
+            XCTFail("Expected decoding to throw an error.")
+        } catch let error as NetworkRequesterError {
+            switch error {
+            case .decodingError(let message):
+                XCTAssertEqual(message, "Failed to decode success response")
+            default:
+                XCTFail("Unexpected error type: \(error)")
+            }
+        } catch {
+            XCTFail("Unexpected error type: \(error)")
         }
     }
 
