@@ -7,7 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		266C55D52CDBFBFC005BBCA9 /* Factory in Frameworks */ = {isa = PBXBuildFile; productRef = 266C55D42CDBFBFC005BBCA9 /* Factory */; };
+		266C55DD2CDC0888005BBCA9 /* Factory in Frameworks */ = {isa = PBXBuildFile; productRef = 266C55DC2CDC0888005BBCA9 /* Factory */; };
 		26D16B872CDBD46100B9F513 /* Networking in Frameworks */ = {isa = PBXBuildFile; productRef = 26D16B862CDBD46100B9F513 /* Networking */; };
 		26D16B8D2CDBD76000B9F513 /* Logging in Frameworks */ = {isa = PBXBuildFile; productRef = 26D16B8C2CDBD76000B9F513 /* Logging */; };
 /* End PBXBuildFile section */
@@ -74,7 +74,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				266C55D52CDBFBFC005BBCA9 /* Factory in Frameworks */,
+				266C55DD2CDC0888005BBCA9 /* Factory in Frameworks */,
 				26D16B8D2CDBD76000B9F513 /* Logging in Frameworks */,
 				26D16B872CDBD46100B9F513 /* Networking in Frameworks */,
 			);
@@ -143,7 +143,7 @@
 			packageProductDependencies = (
 				26D16B862CDBD46100B9F513 /* Networking */,
 				26D16B8C2CDBD76000B9F513 /* Logging */,
-				266C55D42CDBFBFC005BBCA9 /* Factory */,
+				266C55DC2CDC0888005BBCA9 /* Factory */,
 			);
 			productName = FetchRecipes;
 			productReference = 2628FCC92CDBCA6D00BC1D5A /* FetchRecipes.app */;
@@ -230,7 +230,7 @@
 			packageReferences = (
 				26D16B852CDBD46100B9F513 /* XCLocalSwiftPackageReference "Networking" */,
 				26D16B8B2CDBD76000B9F513 /* XCLocalSwiftPackageReference "Logging" */,
-				266C55D32CDBFBFC005BBCA9 /* XCRemoteSwiftPackageReference "Factory" */,
+				266C55DB2CDC0888005BBCA9 /* XCRemoteSwiftPackageReference "Factory" */,
 			);
 			preferredProjectObjectVersion = 77;
 			productRefGroup = 2628FCCA2CDBCA6D00BC1D5A /* Products */;
@@ -638,9 +638,9 @@
 /* End XCLocalSwiftPackageReference section */
 
 /* Begin XCRemoteSwiftPackageReference section */
-		266C55D32CDBFBFC005BBCA9 /* XCRemoteSwiftPackageReference "Factory" */ = {
+		266C55DB2CDC0888005BBCA9 /* XCRemoteSwiftPackageReference "Factory" */ = {
 			isa = XCRemoteSwiftPackageReference;
-			repositoryURL = "git@github.com:hmlongco/Factory.git";
+			repositoryURL = "https://github.com/hmlongco/Factory.git";
 			requirement = {
 				kind = exactVersion;
 				version = 2.4.1;
@@ -649,9 +649,9 @@
 /* End XCRemoteSwiftPackageReference section */
 
 /* Begin XCSwiftPackageProductDependency section */
-		266C55D42CDBFBFC005BBCA9 /* Factory */ = {
+		266C55DC2CDC0888005BBCA9 /* Factory */ = {
 			isa = XCSwiftPackageProductDependency;
-			package = 266C55D32CDBFBFC005BBCA9 /* XCRemoteSwiftPackageReference "Factory" */;
+			package = 266C55DB2CDC0888005BBCA9 /* XCRemoteSwiftPackageReference "Factory" */;
 			productName = Factory;
 		};
 		26D16B862CDBD46100B9F513 /* Networking */ = {
