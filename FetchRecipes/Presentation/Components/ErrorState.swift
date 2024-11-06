@@ -35,24 +35,56 @@ struct ErrorState: Equatable {
 struct ErrorStateView: View {
     let errorState: ErrorState
 
+    @State private var shakeOffset: CGFloat = 0.0
+
     var body: some View {
-        VStack {
+        VStack(spacing: 16) {
+            // Title with a shake animation
             Text(errorState.title)
                 .font(.title)
+                .bold()
+                .multilineTextAlignment(.center)
+                .foregroundColor(.red)
+                .offset(x: shakeOffset)
+                .animation(
+                    .default.repeatCount(3, autoreverses: true),
+                    value: shakeOffset
+                )
 
+            // Message
             Text(errorState.message)
                 .font(.body)
+                .multilineTextAlignment(.center)
+                .foregroundColor(.primary)
 
-            HStack {
-                ForEach(errorState.actions) {
-                    Button($0.text, action: $0.action)
-                }
+            // Action buttons
+            ForEach(errorState.actions) { action in
+                Button(action.text, action: action.action)
+                    .padding()
+                    .background(Color.blue)
+                    .foregroundColor(.white)
+                    .cornerRadius(8)
             }
         }
         .padding()
-        .background {
-            RoundedRectangle(cornerRadius: 10)
-                .fill(Color.gray.opacity(0.1))
+        .background(
+            RoundedRectangle(cornerRadius: 12)
+                .fill(Color(.systemGray6))
+                .shadow(color: Color.black.opacity(0.2), radius: 8, x: 0, y: 5)
+        )
+        .onAppear {
+            triggerShake()
+        }
+    }
+
+    private func triggerShake() {
+        // Simple shake effect by toggling the offset
+        shakeOffset = 10
+        DispatchQueue.main.asyncAfter(deadline: .now() + 0.1) {
+            shakeOffset = -10
+        }
+        DispatchQueue.main.asyncAfter(deadline: .now() + 0.2) {
+            shakeOffset = 0
         }
     }
 }

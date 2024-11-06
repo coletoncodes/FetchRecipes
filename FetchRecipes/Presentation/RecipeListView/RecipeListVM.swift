@@ -8,7 +8,11 @@
 import Factory
 import Foundation
 
-final class MockRecipeListVM: RecipeListVM {}
+final class MockRecipeListVM: RecipeListVM {
+    override func dispatch(_ action: RecipeListVM.Action) {
+        // do nothin
+    }
+}
 
 class RecipeListVM: ObservableObject {
     @Injected(\ApplicationContainer.fetchRecipesUseCase) private var fetchRecipesUseCase

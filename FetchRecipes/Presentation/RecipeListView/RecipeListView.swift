@@ -121,7 +121,7 @@ fileprivate extension RecipeListView {
 // Loaded View
 #Preview("Loaded State") {
     let vm = PresentationContainer.shared.recipeListVM()
-    let errorState = ErrorState(title: "Error", message: "Something went wrong")
+    let errorState = ErrorState(title: "Error", message: "Something went wrong", actions: [.init(text: "Retry", action: {})])
     vm.viewState = .loaded(Recipe.previewData)
     return RecipeListView()
 }
