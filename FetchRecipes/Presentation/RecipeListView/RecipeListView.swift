@@ -36,22 +36,24 @@ struct RecipeListView: View {
     }
 }
 
+// MARK: - Previews
+#if DEBUG
 // Empty View
-#Preview {
+#Preview("Empty State") {
     let vm = PresentationContainer.shared.recipeListVM()
     vm.viewState = .empty
     return RecipeListView()
 }
 
 // Loading View
-#Preview {
+#Preview("Loading State") {
     let vm = PresentationContainer.shared.recipeListVM()
     vm.viewState = .loading
     return RecipeListView()
 }
 
 // Error View
-#Preview {
+#Preview("Error State") {
     let vm = PresentationContainer.shared.recipeListVM()
     let errorState = ErrorState(title: "Error", message: "Something went wrong")
     vm.viewState = .error(errorState)
@@ -59,9 +61,10 @@ struct RecipeListView: View {
 }
 
 // Loaded View
-#Preview {
+#Preview("Loaded State") {
     let vm = PresentationContainer.shared.recipeListVM()
     let errorState = ErrorState(title: "Error", message: "Something went wrong")
     vm.viewState = .loaded(Recipe.previewData)
     return RecipeListView()
 }
+#endif
