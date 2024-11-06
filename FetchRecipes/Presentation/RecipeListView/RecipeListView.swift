@@ -22,9 +22,7 @@ struct RecipeListView: View {
                 case let .error(errorState):
                     ErrorStateView(errorState: errorState)
                 case let .loaded(recipes):
-                    List(recipes) {
-                        Text($0.name)
-                    }
+                    RecipeList(recipes: recipes)
                 }
             }
             .padding()
@@ -32,6 +30,66 @@ struct RecipeListView: View {
         }
         .onAppear {
             vm.dispatch(.onAppear)
+        }
+    }
+}
+
+import Kingfisher
+
+fileprivate extension RecipeListView {
+    struct RecipeList: View {
+        let recipes: [Recipe]
+
+        var body: some View {
+            List(recipes, id: \.uuid) { recipe in
+                RecipeCell(recipe: recipe)
+                    .listRowInsets(EdgeInsets())
+                    .listRowSeparator(.hidden)
+                    .padding(.vertical)
+            }
+            .listStyle(.plain) // Plain list style for minimalism
+        }
+    }
+
+    struct RecipeCell: View {
+        let recipe: Recipe
+
+        var body: some View {
+            HStack(alignment: .top, spacing: 12) {
+                // Recipe Image
+                KFImage(recipe.photoURLSmall)
+                    .resizable()
+                    .scaledToFill()
+                    .frame(width: 60, height: 60)
+                    .cornerRadius(8)
+                    .clipped()
+
+                // Recipe Details
+                VStack(alignment: .leading, spacing: 4) {
+                    Text(recipe.name)
+                        .font(.headline)
+                        .foregroundColor(.primary)
+
+                    Text(recipe.cuisine)
+                        .font(.subheadline)
+                        .foregroundColor(.secondary)
+
+                    Link("Source", destination: recipe.sourceURL)
+                        .font(.footnote)
+                        .foregroundColor(.blue)
+                }
+                .frame(maxWidth: .infinity, alignment: .leading)
+            }
+            .padding()
+            .background(
+                RoundedRectangle(cornerRadius: 12)
+                    .stroke(LinearGradient(
+                        colors: [Color.purple, Color.blue],
+                        startPoint: .topLeading,
+                        endPoint: .bottomTrailing
+                    ), lineWidth: 2)
+            )
+            .padding(.horizontal)
         }
     }
 }
