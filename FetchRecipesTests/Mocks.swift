@@ -29,3 +29,14 @@ final class MockJSONDecoder: JSONDecoder, @unchecked Sendable {
         throw TestError.unexpected("Missing stubbed decode closure")
     }
 }
+
+final class MockRecipesRequester: RecipesNetworkRequesting {
+
+    var getRecipesStub: (() async throws -> [RecipeDTO])?
+    func getRecipes() async throws -> [RecipeDTO] {
+        guard let getRecipesStub else {
+            throw TestError.unexpected("getRecipesStub not set")
+        }
+        return try await getRecipesStub()
+    }
+}
