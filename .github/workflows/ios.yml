@@ -2,7 +2,7 @@ name: iOS Build & Run Unit Tests
 
 on:
   push:
-    branches: [ "master", "development", "release/*" ]
+    branches: [ "master", "development" ]
   pull_request:
     branches: [ "master", "development", "release/*" ]
 
@@ -17,7 +17,7 @@ jobs:
 
       - name: Set Default Scheme
         run: echo "Using default scheme: FetchRecipes"
-      
+
       - name: Build
         env:
           scheme: "FetchRecipes"
@@ -30,7 +30,7 @@ jobs:
 
           echo "Building scheme $scheme using test plan $testPlan on device $device"
           xcodebuild build-for-testing -scheme "$scheme" -"$filetype_parameter" "$file_to_build" -destination "platform=$platform,name=$device" -testPlan "$testPlan"
-      
+
       - name: Test with Coverage
         env:
           scheme: "FetchRecipes"
