@@ -31,11 +31,12 @@ final class RecipesNetworkRequester: RecipesNetworkRequesting {
 //    }
 
     func getRecipes() async throws -> NetworkResponse<[RecipeDTO], EmptyErrorResponse> {
-        do {
-//            let recipes = try await getRecipesResponseHandler.handle(request: GetRecipesRequest())
-
-        } catch {
-
-        }
+        fatalError("unimplemented")
+//        do {
+////            let recipes = try await getRecipesResponseHandler.handle(request: GetRecipesRequest())
+//
+//        } catch {
+//
+//        }
     }
 }

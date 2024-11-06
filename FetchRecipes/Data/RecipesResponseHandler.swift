@@ -13,7 +13,11 @@ final class RecipesResponseHandler<T: Decodable>: NetworkResponseHandler {
     typealias SuccessResponse = T
     typealias ErrorResponse = EmptyErrorResponse
 
-    @Injected(\DataContainer.jsonDecoder) private var decoder
+    private let decoder: JSONDecoder
+
+    init(decoder: JSONDecoder = DataContainer.shared.jsonDecoder()) {
+        self.decoder = decoder
+    }
 
     func handleResponse(statusCode: Int, responseData: Data) async throws -> NetworkResponse<T, ErrorResponse> {
         guard statusCode >= 200 && statusCode < 300 else {
