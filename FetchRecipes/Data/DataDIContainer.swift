@@ -45,4 +45,9 @@ extension DataContainer {
         }
         .cached
     }
+
+    var recipesNetworkRequester: Factory<RecipesNetworkRequesting> {
+        self { RecipesNetworkRequester() }
+            .cached
+    }
 }
