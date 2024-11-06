@@ -14,7 +14,7 @@ extension JSONDecoder {
     ///   - data: The data to use for decoding
     /// - Returns: The decoded data
     /// - Throws: A ``DecodingError`` if decoding fails, or the raw error if is not a   ``DecodingError`` type
-    func decodeResponse<T: Decodable>(
+    public func decodeResponse<T: Decodable>(
         _ type: T.Type,
         from data: Data
     ) throws -> T {
