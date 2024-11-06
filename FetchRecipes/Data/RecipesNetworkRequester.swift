@@ -5,6 +5,7 @@
 //  Created by Coleton Gorecke on 11/6/24.
 //
 
+import Factory
 import Foundation
 import Networking
 
@@ -13,8 +14,11 @@ protocol RecipesNetworkRequesting {
 }
 
 final class RecipesNetworkRequester: RecipesNetworkRequesting {
-//    @Injected(\.networkRequesting) private var requester
-//    @Injected(\.jsonDecoder) private var decoder
+    private let getRecipesResponseHandler: RecipesResponseHandler<GetRecipesRequest.SuccessResponse>
+
+    init() {
+        self.getRecipesResponseHandler = DataContainer.shared.makeRecipesResponseHandler(successResponse: GetRecipesRequest.SuccessResponse.self).resolve()
+    }
 
 //    func getActivities() async throws -> NetworkResponse<[ActivityDTO], SimpleErrorResponse> {
 //        do {
@@ -27,6 +31,11 @@ final class RecipesNetworkRequester: RecipesNetworkRequesting {
 //    }
 
     func getRecipes() async throws -> NetworkResponse<[RecipeDTO], EmptyErrorResponse> {
-        fatalError("Unimplemented")
+        do {
+//            let recipes = try await getRecipesResponseHandler.handle(request: GetRecipesRequest())
+
+        } catch {
+
+        }
     }
 }
