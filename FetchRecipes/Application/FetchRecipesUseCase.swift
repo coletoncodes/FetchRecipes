@@ -16,6 +16,11 @@ final class FetchRecipesUseCaseImpl: FetchRecipesUseCase {
     @Injected(\DataContainer.recipesRepository) private var recipesRepo
 
     func fetchRecipes() async throws -> [Recipe] {
-        return try await recipesRepo.getRecipes(forceRefresh: false)
+        do {
+            return try await recipesRepo.getRecipes(forceRefresh: false)
+        } catch {
+            log("failed to fetch recipes with error: \(error)", .error, .useCase)
+            throw error
+        }
     }
 }

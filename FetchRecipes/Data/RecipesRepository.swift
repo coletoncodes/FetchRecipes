@@ -20,9 +20,11 @@ final class RecipesRepo: RecipesRepository {
     func getRecipes(forceRefresh: Bool = false) async throws -> [Recipe] {
         // Return cached recipes if available and not forcing a refresh
         if let cachedRecipes = cachedRecipes, !forceRefresh {
+            log("Returning cached recipes", .debug, .repository)
             return cachedRecipes
         }
 
+        log("Fetching recipes..", .debug, .repository)
         // Otherwise, fetch recipes from the network
         do {
             let recipeDTOs = try await recipesNetworkRequester.getRecipes()
@@ -55,13 +57,14 @@ final class RecipesRepo: RecipesRepository {
 
             // Cache the result if all recipes are valid
             guard recipes.count == recipeDTOs.count else {
+                log("Recipes not complete: \(recipes.count) / \(recipeDTOs.count)", .info, .repository)
                 throw RecipesRepoError.recipesNotComplete
             }
+
             self.cachedRecipes = recipes  // Store in cache
             return recipes
-
         } catch {
-            log("Failed to fetch recipes: \(error)", .error, .networking)
+            log("Failed to fetch recipes: \(error)", .error, .repository)
             throw error
         }
     }

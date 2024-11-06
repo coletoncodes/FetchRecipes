@@ -33,10 +33,23 @@ final class MockJSONDecoder: JSONDecoder, @unchecked Sendable {
 final class MockRecipesRequester: RecipesNetworkRequesting {
 
     var getRecipesStub: (() async throws -> [RecipeDTO])?
+
     func getRecipes() async throws -> [RecipeDTO] {
         guard let getRecipesStub else {
             throw TestError.unexpected("getRecipesStub not set")
         }
         return try await getRecipesStub()
+    }
+}
+
+final class MockRecipesRepository: RecipesRepository {
+    var getRecipesStub: ((Bool) async throws -> [Recipe])?
+
+    func getRecipes(forceRefresh: Bool) async throws -> [Recipe] {
+        guard let getRecipesStub else {
+            throw TestError.unexpected("getRecipesStub not set")
+        }
+
+        return try await getRecipesStub(forceRefresh)
     }
 }

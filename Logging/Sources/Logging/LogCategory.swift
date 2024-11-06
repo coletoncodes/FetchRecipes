@@ -9,7 +9,8 @@
 public enum LogCategory: Sendable, Equatable {
     case `default`
     case networking
-    case interactor
+    case useCase
+    case repository
     case viewModel
 
     case custom(String)
@@ -18,7 +19,8 @@ public enum LogCategory: Sendable, Equatable {
         switch self {
         case .default: return "Default"
         case .networking: return "Networking"
-        case .interactor: return "Interactor"
+        case .useCase: return "UseCase"
+        case .repository: return "Repository"
         case .viewModel: return "ViewModel"
         case .custom(let description): return description
         }
