@@ -8,14 +8,13 @@
 import Factory
 import Foundation
 
-@MainActor
 class RecipeListVM: ObservableObject {
     @Injected(\ApplicationContainer.fetchRecipesUseCase) private var fetchRecipesUseCase
     @Injected(\ApplicationContainer.refreshRecipesUseCase) private var refreshRecipesUseCase
 
     @Published var viewState: PresentationState = .empty
 
-    enum PresentationState {
+    enum PresentationState: Equatable {
         case empty
         case loaded([Recipe])
         case loading
@@ -38,7 +37,7 @@ class RecipeListVM: ObservableObject {
 
     private func fetchRecipes() {
         viewState = .loading
-        Task {
+        Task { @MainActor in
             do {
                 let recipes = try await fetchRecipesUseCase.fetchRecipes()
                 viewState = recipes.isEmpty ? .empty : .loaded(recipes)
@@ -51,7 +50,7 @@ class RecipeListVM: ObservableObject {
 
     private func refreshRecipes() {
         viewState = .loading
-        Task {
+        Task { @MainActor in
             do {
                 let recipes = try await refreshRecipesUseCase.refreshRecipes()
                 viewState = recipes.isEmpty ? .empty : .loaded(recipes)
