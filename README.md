@@ -1,7 +1,5 @@
 # FetchRecipes
 
-**Code Coverage:** COVERAGE_PLACEHOLDER%
-
 ### Steps to Run the App
 
 ### Focus Areas: What specific areas of the project did you prioritize? Why did you choose to focus on these areas?

@@ -7,63 +7,18 @@ on:
     branches: [ "master", "development", "release/*" ]
 
 jobs:
-  build:
-    name: Build, Test, and Report Coverage
+  run_tests:
     runs-on: macos-15
 
     steps:
-      - name: Checkout
-        uses: actions/checkout@v4
+      - uses: actions/checkout@v4
 
-      - name: Set up Xcode 16
-        run: sudo xcode-select -switch /Applications/Xcode_16.1.app
+      - name: Select Xcode 16.1
+        run: sudo xcode-select -switch /Applications/Xcode_16.1.app && /usr/bin/xcodebuild -version
 
-      - name: Build
+      - name: Run tests
         run: |
-          scheme="FetchRecipes"
-          platform="iOS Simulator"
-          device=$(xcrun xctrace list devices 2>&1 | grep -oE 'iPhone.*?[^\(]+' | head -1 | awk '{$1=$1;print}' | sed -e "s/ Simulator$//")
-          if [ "$(ls -A | grep -i \\.xcworkspace\$)" ]; then 
-            filetype_parameter="workspace" 
-            file_to_build="$(ls -A | grep -i \\.xcworkspace\$)"
-          else 
-            filetype_parameter="project" 
-            file_to_build="$(ls -A | grep -i \\.xcodeproj\$)"
-          fi
-          file_to_build=$(echo "$file_to_build" | awk '{$1=$1;print}')
-
-          echo "Building scheme $scheme on device $device"
-          xcodebuild build-for-testing -scheme "$scheme" -"$filetype_parameter" "$file_to_build" -destination "platform=$platform,name=$device"
-
-      - name: Test with Coverage
-        run: |
-          scheme="FetchRecipes"
-          platform="iOS Simulator"
-          device=$(xcrun xctrace list devices 2>&1 | grep -oE 'iPhone.*?[^\(]+' | head -1 | awk '{$1=$1;print}' | sed -e "s/ Simulator$//")
-          if [ "$(ls -A | grep -i \\.xcworkspace\$)" ]; then 
-            filetype_parameter="workspace" 
-            file_to_build="$(ls -A | grep -i \\.xcworkspace\$)"
-          else 
-            filetype_parameter="project" 
-            file_to_build="$(ls -A | grep -i \\.xcodeproj\$)"
-          fi
-          file_to_build=$(echo "$file_to_build" | awk '{$1=$1;print}')
-
-          echo "Running tests with coverage for scheme $scheme on device $device"
-          xcodebuild test -scheme "$scheme" -"$filetype_parameter" "$file_to_build" -destination "platform=$platform,name=$device" -enableCodeCoverage YES -resultBundlePath result.bundle | xcpretty -r junit --output result.xml
-
-      - name: Extract Coverage
-        run: |
-          xcrun xccov view --report --json result.bundle > coverage.json
-          coverage=$(cat coverage.json | jq '.coverage' -r)
-          echo "Coverage: $coverage"
-          echo "COVERAGE=$coverage" >> $GITHUB_ENV
-
-      - name: Update README with Coverage
-        run: |
-          sed -i '' "s/COVERAGE_PLACEHOLDER/${{ env.COVERAGE }}/g" README.md
-          git config --global user.name "github-actions[bot]"
-          git config --global user.email "github-actions[bot]@users.noreply.github.com"
-          git add README.md
-          git commit -m "Update code coverage to ${{ env.COVERAGE }}%"
-          git push
+          xcodebuild test \
+            -scheme FetchRecipes \
+            -project FetchRecipes.xcodeproj \
+            -destination 'platform=iOS Simulator,name=iPhone 14,OS=16.0' | xcpretty && exit ${PIPESTATUS[0]}
