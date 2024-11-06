@@ -9,11 +9,14 @@ on:
 jobs:
   build:
     name: Build, Test, and Report Coverage
-    runs-on: macos-latest
+    runs-on: macos-13
 
     steps:
       - name: Checkout
         uses: actions/checkout@v4
+
+      - name: Set up Xcode
+        run: sudo xcode-select -switch /Applications/Xcode_16.1.app
 
       - name: Build
         run: |
