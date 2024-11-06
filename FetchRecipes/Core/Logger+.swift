@@ -10,8 +10,7 @@ import OSLog
 import Logging
 
 /// The logging function used in the app.
-/// Copy this function almost exactly in host app's to simplify
-/// logging across the app.
+/// avoids inporting Logging throughout the app
 func log(
     _ message: String,
     _ osLogType: OSLogType = .debug,
