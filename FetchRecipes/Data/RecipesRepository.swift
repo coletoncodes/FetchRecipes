@@ -56,11 +56,6 @@ final class RecipesRepo: RecipesRepository {
             }
 
             // Cache the result if all recipes are valid
-            guard recipes.count == recipeDTOs.count else {
-                log("Recipes not complete: \(recipes.count) / \(recipeDTOs.count)", .info, .repository)
-                throw RecipesRepoError.recipesNotComplete
-            }
-
             self.cachedRecipes = recipes  // Store in cache
             return recipes
         } catch {
@@ -68,8 +63,4 @@ final class RecipesRepo: RecipesRepository {
             throw error
         }
     }
-}
-
-enum RecipesRepoError: Error {
-    case recipesNotComplete
 }

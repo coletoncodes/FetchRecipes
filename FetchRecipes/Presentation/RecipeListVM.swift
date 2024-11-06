@@ -8,6 +8,8 @@
 import Factory
 import Foundation
 
+final class MockRecipeListVM: RecipeListVM {}
+
 class RecipeListVM: ObservableObject {
     @Injected(\ApplicationContainer.fetchRecipesUseCase) private var fetchRecipesUseCase
     @Injected(\ApplicationContainer.refreshRecipesUseCase) private var refreshRecipesUseCase

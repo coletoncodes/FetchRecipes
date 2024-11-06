@@ -51,13 +51,13 @@ final class FetchRecipesUseCaseTests: XCTestCase {
 
     func testFetchRecipesFailure() async throws {
         // Arrange: Set the stub to throw an error
-        mockRecipesRepo.getRecipesStub = { _ in throw RecipesRepoError.recipesNotComplete }
+        mockRecipesRepo.getRecipesStub = { _ in throw TestError.expected }
 
         // Act and Assert: Call the use case and verify it throws the expected error
         do {
             _ = try await sut.fetchRecipes()
             XCTFail("Expected fetchRecipes to throw an error")
-        } catch RecipesRepoError.recipesNotComplete {
+        } catch TestError.expected {
             // Expected error, test passes
         } catch {
             XCTFail("Unexpected error: \(error)")

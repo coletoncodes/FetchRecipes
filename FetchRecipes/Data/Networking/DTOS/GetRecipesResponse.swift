@@ -13,7 +13,7 @@ struct GetRecipesResponse: Codable {
 }
 
 // MARK: - Recipe
-struct RecipeDTO: Codable {
+struct RecipeDTO: Codable, Equatable {
     let cuisine: String
     let name: String
     let photoURLLarge, photoURLSmall: String?

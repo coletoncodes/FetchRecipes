@@ -13,9 +13,11 @@ struct ErrorState: Equatable {
     let message: String
     let actions: [ButtonAction]
 
-    struct ButtonAction: Equatable {
+    struct ButtonAction: Equatable, Identifiable {
         let text: String
         let action: () -> Void
+
+        var id: String { text }
 
         static func == (lhs: ErrorState.ButtonAction, rhs: ErrorState.ButtonAction) -> Bool {
             lhs.text == rhs.text

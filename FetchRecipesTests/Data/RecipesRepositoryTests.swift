@@ -46,31 +46,6 @@ final class RecipesRepositoryTests: XCTestCase {
         XCTAssertEqual(recipes.first?.name, "Pizza")
     }
 
-    func testGetRecipesIncompleteData() async throws {
-        // Arrange: Provide incomplete data to simulate a malformed response
-        let incompleteRecipeDTO = RecipeDTO(
-            cuisine: "Italian",
-            name: "Pizza",
-            photoURLLarge: nil,  // Missing required field
-            photoURLSmall: "https://example.com/small.jpg",
-            sourceURL: "https://example.com",
-            uuid: "1",
-            youtubeURL: "https://youtube.com/video"
-        )
-
-        mockRecipesRequester.getRecipesStub = { [incompleteRecipeDTO] }
-
-        // Act & Assert
-        do {
-            _ = try await sut.getRecipes()
-            XCTFail("Expected to throw RecipesRepoError.recipesNotComplete")
-        } catch let error as RecipesRepoError {
-            XCTAssertEqual(error, .recipesNotComplete)
-        } catch {
-            XCTFail("Unexpected error type: \(error)")
-        }
-    }
-
     func testGetRecipesEmptyData() async throws {
         // Arrange: Return an empty array
         mockRecipesRequester.getRecipesStub = { [] }
@@ -99,7 +74,7 @@ final class RecipesRepositoryTests: XCTestCase {
     }
 
     func testFetchRecipesFiltersInvalidURLs() async throws {
-        // Mock recipes with both valid and invalid URLs
+        // Arrange: Create mock RecipeDTOs with both valid and invalid URLs
         let validRecipeDTO = RecipeDTO(
             cuisine: "Italian",
             name: "Valid Recipe",
@@ -120,16 +95,21 @@ final class RecipesRepositoryTests: XCTestCase {
             youtubeURL: "https://youtube.com/video"
         )
 
+        // Arrange: Set up the stub to return both valid and invalid RecipeDTOs
         mockRecipesRequester.getRecipesStub = { [validRecipeDTO, invalidRecipeDTO] }
 
-        do {
-            _ = try await sut.getRecipes()
-            XCTFail("Expected to throw RecipesRepoError.recipesNotComplete")
-        } catch let error as RecipesRepoError {
-            XCTAssertEqual(error, .recipesNotComplete)
-        } catch {
-            XCTFail("Unexpected error type: \(error)")
-        }
+        // Act: Attempt to fetch recipes, which should filter out the invalid one
+        let recipes = try await sut.getRecipes()
+
+        // Assert: Ensure only the valid recipe is returned
+        XCTAssertEqual(recipes.count, 1, "Expected only one valid recipe to be returned.")
+        XCTAssertEqual(recipes.first?.uuid, validRecipeDTO.uuid, "The returned recipe should be the valid one.")
+        XCTAssertEqual(recipes.first?.name, validRecipeDTO.name, "The name of the returned recipe should match the valid recipe.")
+        XCTAssertEqual(recipes.first?.cuisine, validRecipeDTO.cuisine, "Cuisine of the returned recipe should match the valid recipe.")
+        XCTAssertNotNil(recipes.first?.photoURLLarge, "Valid recipe should have a non-nil large photo URL.")
+        XCTAssertNotNil(recipes.first?.photoURLSmall, "Valid recipe should have a non-nil small photo URL.")
+        XCTAssertNotNil(recipes.first?.sourceURL, "Valid recipe should have a non-nil source URL.")
+        XCTAssertNotNil(recipes.first?.youtubeURL, "Valid recipe should have a non-nil YouTube URL.")
     }
 
     func testFetchRecipesCaching() async throws {

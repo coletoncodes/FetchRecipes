@@ -100,7 +100,7 @@ final class RecipeListVMTests: XCTestCase {
 
         mockFetchRecipesUseCase.fetchRecipesStub = {
             expectation.fulfill()
-            throw RecipesRepoError.recipesNotComplete
+            throw TestError.expected
         }
 
         sut.dispatch(.onAppear)
@@ -146,7 +146,7 @@ final class RecipeListVMTests: XCTestCase {
 
         mockRefreshRecipesUseCase.refreshRecipesStub = {
             expectation.fulfill()
-            throw RecipesRepoError.recipesNotComplete
+            throw TestError.expected
         }
 
         sut.dispatch(.refresh)
