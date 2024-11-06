@@ -24,5 +24,43 @@ final class RefreshRecipesUseCaseTests: XCTestCase {
         sut = RefreshRecipesUseCaseImp()
     }
 
+    func testRefreshRecipesSuccess() async throws {
+        // Arrange: Stub the repository to return a list of recipes
+        let mockRecipe = Recipe(
+            cuisine: "Italian",
+            name: "Pizza",
+            photoURLLarge: URL(string: "https://example.com/large.jpg")!,
+            photoURLSmall: URL(string: "https://example.com/small.jpg")!,
+            sourceURL: URL(string: "https://example.com")!,
+            uuid: "1",
+            youtubeURL: URL(string: "https://youtube.com/video")!
+        )
 
+        mockRecipesRepo.getRecipesStub = { forceRefresh in
+            XCTAssertTrue(forceRefresh)
+            return [mockRecipe]
+        }
+
+        // Act: Call the use case
+        let recipes = try await sut.refreshRecipes()
+
+        // Assert: Check if the result matches the expected output
+        XCTAssertEqual(recipes.count, 1)
+        XCTAssertEqual(recipes.first, mockRecipe)
+    }
+
+    func testRefreshRecipesFailure() async throws {
+        // Arrange: Set the stub to throw an error
+        mockRecipesRepo.getRecipesStub = { _ in throw RecipesRepoError.recipesNotComplete }
+
+        // Act and Assert: Call the use case and verify it throws the expected error
+        do {
+            _ = try await sut.refreshRecipes()
+            XCTFail("Expected fetchRecipes to throw an error")
+        } catch RecipesRepoError.recipesNotComplete {
+            // Expected error, test passes
+        } catch {
+            XCTFail("Unexpected error: \(error)")
+        }
+    }
 }
