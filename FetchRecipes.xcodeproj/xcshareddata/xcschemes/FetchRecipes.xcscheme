@@ -30,7 +30,7 @@
       shouldUseLaunchSchemeArgsEnv = "YES">
       <TestPlans>
          <TestPlanReference
-            reference = "container:FetchRecipesUnitTestPlan.xctestplan"
+            reference = "container:UnitTests.xctestplan"
             default = "YES">
          </TestPlanReference>
       </TestPlans>
