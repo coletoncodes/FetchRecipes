@@ -153,7 +153,7 @@ class RecipeListVM: ObservableObject {
 
 ## Weakest Part of the Project
 
-I believe the weakest part lies in the design, I made a mix of custom components and utilized native SwiftUI components. If given more time, I would 
+I believe the weakest part lies in the design, I made a mix of custom components and utilized native SwiftUI components. If given more time, I would have abstracted these a bit more, or even made a DesignSystem module that could be used.
 
 ---
 
@@ -164,5 +164,11 @@ I believe the weakest part lies in the design, I made a mix of custom components
 
 - **Kingfisher** ([GitHub Link](https://github.com/onevcat/Kingfisher.git))  
    - A pure-Swift library for downloading and caching images, allowing efficient image handling with minimal custom code.
+
+---
+
+## Bonus Items
+
+The project does utilize GitHub actions to run the tests, and is required to pass.
 
 ---
