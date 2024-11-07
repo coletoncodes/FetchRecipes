@@ -18,7 +18,5 @@ struct GetRecipesRequest: NetworkRequest {
 
     var path: String { "https://d3jbb8n5wk0qxi.cloudfront.net/recipes.json" }
 
-    var headers: [NetworkHeader] {
-        [.jsonContentType]
-    }
+    var headers: [NetworkHeader] { [] }
 }

@@ -53,3 +53,26 @@ final class MockRecipesRepository: RecipesRepository {
         return try await getRecipesStub(forceRefresh)
     }
 }
+
+final class MockFetchRecipesUseCase: FetchRecipesUseCase {
+    var fetchRecipesStub: (() async throws -> [Recipe])?
+
+    func fetchRecipes() async throws -> [Recipe] {
+        guard let fetchRecipesStub else {
+            throw TestError.unexpected("fetchRecipesStub not set")
+        }
+
+        return try await fetchRecipesStub()
+    }
+}
+
+final class MockRefreshRecipesUseCase: RefreshRecipesUseCase {
+    var refreshRecipesStub: (() async throws -> [Recipe])?
+
+    func refreshRecipes() async throws -> [Recipe] {
+        guard let refreshRecipesStub else {
+            throw TestError.unexpected("refreshRecipesStub not set")
+        }
+        return try await refreshRecipesStub()
+    }
+}

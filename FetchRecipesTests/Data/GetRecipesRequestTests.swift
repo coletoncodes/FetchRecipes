@@ -36,9 +36,8 @@ final class GetRecipesRequestTests: XCTestCase {
     }
 
     // Test to ensure that headers contain the correct content type
-    func testHeaders_JSONContentType() throws {
-        XCTAssertEqual(request.headers.count, 1, "There should be exactly one header.")
-        XCTAssertEqual(request.headers.first, .jsonContentType, "Header should specify JSON content type.")
+    func testHeaders_Empty() throws {
+        XCTAssertEqual(request.headers.count, 0, "There should be no headers.")
     }
 
     // Test to ensure the body is nil (since it's a GET request)
