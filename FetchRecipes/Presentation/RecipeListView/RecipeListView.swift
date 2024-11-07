@@ -159,6 +159,13 @@ fileprivate extension RecipeListView {
     }
 }
 
+final class MockRecipeListVM: RecipeListVM {
+    override func dispatch(_ action: RecipeListVM.Action) {
+        // do nothing
+        // can mutate this if desired for previews.
+    }
+}
+
 // MARK: - Previews
 #if DEBUG
 // Empty View
