@@ -6,6 +6,13 @@
 	objectVersion = 77;
 	objects = {
 
+/* Begin PBXBuildFile section */
+		266C55DD2CDC0888005BBCA9 /* Factory in Frameworks */ = {isa = PBXBuildFile; productRef = 266C55DC2CDC0888005BBCA9 /* Factory */; };
+		266C56802CDC2170005BBCA9 /* Kingfisher in Frameworks */ = {isa = PBXBuildFile; productRef = 266C567F2CDC2170005BBCA9 /* Kingfisher */; };
+		26D16B872CDBD46100B9F513 /* Networking in Frameworks */ = {isa = PBXBuildFile; productRef = 26D16B862CDBD46100B9F513 /* Networking */; };
+		26D16B8D2CDBD76000B9F513 /* Logging in Frameworks */ = {isa = PBXBuildFile; productRef = 26D16B8C2CDBD76000B9F513 /* Logging */; };
+/* End PBXBuildFile section */
+
 /* Begin PBXContainerItemProxy section */
 		2628FCDA2CDBCA6F00BC1D5A /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
@@ -23,10 +30,26 @@
 		};
 /* End PBXContainerItemProxy section */
 
+/* Begin PBXCopyFilesBuildPhase section */
+		26D16B712CDBD10E00B9F513 /* Embed Frameworks */ = {
+			isa = PBXCopyFilesBuildPhase;
+			buildActionMask = 2147483647;
+			dstPath = "";
+			dstSubfolderSpec = 10;
+			files = (
+			);
+			name = "Embed Frameworks";
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXCopyFilesBuildPhase section */
+
 /* Begin PBXFileReference section */
 		2628FCC92CDBCA6D00BC1D5A /* FetchRecipes.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = FetchRecipes.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		2628FCD92CDBCA6F00BC1D5A /* FetchRecipesTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = FetchRecipesTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		2628FCE32CDBCA6F00BC1D5A /* FetchRecipesUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = FetchRecipesUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		266C556F2CDBEB74005BBCA9 /* UnitTests.xctestplan */ = {isa = PBXFileReference; lastKnownFileType = text; path = UnitTests.xctestplan; sourceTree = "<group>"; };
+		26D16B842CDBD43500B9F513 /* Networking */ = {isa = PBXFileReference; lastKnownFileType = wrapper; path = Networking; sourceTree = "<group>"; };
+		26D16B8A2CDBD72400B9F513 /* Logging */ = {isa = PBXFileReference; lastKnownFileType = wrapper; path = Logging; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFileSystemSynchronizedRootGroup section */
@@ -52,6 +75,10 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				266C56802CDC2170005BBCA9 /* Kingfisher in Frameworks */,
+				266C55DD2CDC0888005BBCA9 /* Factory in Frameworks */,
+				26D16B8D2CDBD76000B9F513 /* Logging in Frameworks */,
+				26D16B872CDBD46100B9F513 /* Networking in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -75,6 +102,9 @@
 		2628FCC02CDBCA6D00BC1D5A = {
 			isa = PBXGroup;
 			children = (
+				266C556F2CDBEB74005BBCA9 /* UnitTests.xctestplan */,
+				26D16B8A2CDBD72400B9F513 /* Logging */,
+				26D16B842CDBD43500B9F513 /* Networking */,
 				2628FCCB2CDBCA6D00BC1D5A /* FetchRecipes */,
 				2628FCDC2CDBCA6F00BC1D5A /* FetchRecipesTests */,
 				2628FCE62CDBCA6F00BC1D5A /* FetchRecipesUITests */,
@@ -102,6 +132,7 @@
 				2628FCC52CDBCA6D00BC1D5A /* Sources */,
 				2628FCC62CDBCA6D00BC1D5A /* Frameworks */,
 				2628FCC72CDBCA6D00BC1D5A /* Resources */,
+				26D16B712CDBD10E00B9F513 /* Embed Frameworks */,
 			);
 			buildRules = (
 			);
@@ -112,6 +143,10 @@
 			);
 			name = FetchRecipes;
 			packageProductDependencies = (
+				26D16B862CDBD46100B9F513 /* Networking */,
+				26D16B8C2CDBD76000B9F513 /* Logging */,
+				266C55DC2CDC0888005BBCA9 /* Factory */,
+				266C567F2CDC2170005BBCA9 /* Kingfisher */,
 			);
 			productName = FetchRecipes;
 			productReference = 2628FCC92CDBCA6D00BC1D5A /* FetchRecipes.app */;
@@ -195,6 +230,12 @@
 			);
 			mainGroup = 2628FCC02CDBCA6D00BC1D5A;
 			minimizedProjectReferenceProxies = 1;
+			packageReferences = (
+				26D16B852CDBD46100B9F513 /* XCLocalSwiftPackageReference "Networking" */,
+				26D16B8B2CDBD76000B9F513 /* XCLocalSwiftPackageReference "Logging" */,
+				266C55DB2CDC0888005BBCA9 /* XCRemoteSwiftPackageReference "Factory" */,
+				266C567E2CDC2170005BBCA9 /* XCRemoteSwiftPackageReference "Kingfisher" */,
+			);
 			preferredProjectObjectVersion = 77;
 			productRefGroup = 2628FCCA2CDBCA6D00BC1D5A /* Products */;
 			projectDirPath = "";
@@ -588,6 +629,57 @@
 			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
+
+/* Begin XCLocalSwiftPackageReference section */
+		26D16B852CDBD46100B9F513 /* XCLocalSwiftPackageReference "Networking" */ = {
+			isa = XCLocalSwiftPackageReference;
+			relativePath = Networking;
+		};
+		26D16B8B2CDBD76000B9F513 /* XCLocalSwiftPackageReference "Logging" */ = {
+			isa = XCLocalSwiftPackageReference;
+			relativePath = Logging;
+		};
+/* End XCLocalSwiftPackageReference section */
+
+/* Begin XCRemoteSwiftPackageReference section */
+		266C55DB2CDC0888005BBCA9 /* XCRemoteSwiftPackageReference "Factory" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/hmlongco/Factory.git";
+			requirement = {
+				kind = exactVersion;
+				version = 2.4.1;
+			};
+		};
+		266C567E2CDC2170005BBCA9 /* XCRemoteSwiftPackageReference "Kingfisher" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/onevcat/Kingfisher.git";
+			requirement = {
+				kind = exactVersion;
+				version = 8.1.0;
+			};
+		};
+/* End XCRemoteSwiftPackageReference section */
+
+/* Begin XCSwiftPackageProductDependency section */
+		266C55DC2CDC0888005BBCA9 /* Factory */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 266C55DB2CDC0888005BBCA9 /* XCRemoteSwiftPackageReference "Factory" */;
+			productName = Factory;
+		};
+		266C567F2CDC2170005BBCA9 /* Kingfisher */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 266C567E2CDC2170005BBCA9 /* XCRemoteSwiftPackageReference "Kingfisher" */;
+			productName = Kingfisher;
+		};
+		26D16B862CDBD46100B9F513 /* Networking */ = {
+			isa = XCSwiftPackageProductDependency;
+			productName = Networking;
+		};
+		26D16B8C2CDBD76000B9F513 /* Logging */ = {
+			isa = XCSwiftPackageProductDependency;
+			productName = Logging;
+		};
+/* End XCSwiftPackageProductDependency section */
 	};
 	rootObject = 2628FCC12CDBCA6D00BC1D5A /* Project object */;
 }

@@ -1,0 +1,24 @@
+name: iOS Build & Run Unit Tests
+
+on:
+  push:
+    branches: [ "master", "development" ]
+  pull_request:
+    branches: [ "master", "development", "release/*" ]
+
+jobs:
+  run_tests:
+    runs-on: macos-15
+
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Select Xcode 16.1
+        run: sudo xcode-select -switch /Applications/Xcode_16.1.app && /usr/bin/xcodebuild -version
+
+      - name: Run tests
+        run: |
+          xcodebuild test \
+            -scheme FetchRecipes \
+            -project FetchRecipes.xcodeproj \
+            -destination 'platform=iOS Simulator,name=iPhone 16,OS=18.0' | xcpretty && exit ${PIPESTATUS[0]}

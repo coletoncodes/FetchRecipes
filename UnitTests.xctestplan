@@ -1,0 +1,38 @@
+{
+  "configurations" : [
+    {
+      "id" : "088DEC0B-1473-4C78-B104-47E01D968229",
+      "name" : "Configuration 1",
+      "options" : {
+
+      }
+    }
+  ],
+  "defaultOptions" : {
+    "testTimeoutsEnabled" : true
+  },
+  "testTargets" : [
+    {
+      "target" : {
+        "containerPath" : "container:Networking",
+        "identifier" : "NetworkingTests",
+        "name" : "NetworkingTests"
+      }
+    },
+    {
+      "target" : {
+        "containerPath" : "container:Logging",
+        "identifier" : "LoggingTests",
+        "name" : "LoggingTests"
+      }
+    },
+    {
+      "target" : {
+        "containerPath" : "container:FetchRecipes.xcodeproj",
+        "identifier" : "2628FCD82CDBCA6F00BC1D5A",
+        "name" : "FetchRecipesTests"
+      }
+    }
+  ],
+  "version" : 1
+}
