@@ -139,13 +139,13 @@ class RecipeListVM: ObservableObject {
 
 #### Application Layer
 
-    - **Use Cases**: Business logic for fetching and refreshing recipes (`FetchRecipesUseCase` and `RefreshRecipesUseCase`).
+   - **Use Cases**: Business logic for fetching and refreshing recipes (`FetchRecipesUseCase` and `RefreshRecipesUseCase`).
 
 #### Data Layer
 
-    - **Models**: Data models like `Recipe` are defined here.
-    - **Networking**: The `RecipesNetworkRequester` manages API requests, DTO handling, and response parsing.
-    - **Repository**: `RecipesRepository` is responsible for data persistence and caching, abstracting data-fetching logic from the application.
+   - **Models**: Data models like `Recipe` are defined here.
+   - **Networking**: The `RecipesNetworkRequester` manages API requests, DTO handling, and response parsing.
+   - **Repository**: `RecipesRepository` is responsible for data persistence and caching, abstracting data-fetching logic from the application.
    
 ### 5. **MVVM**:
 
