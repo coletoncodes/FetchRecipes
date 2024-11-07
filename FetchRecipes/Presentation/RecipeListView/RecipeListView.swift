@@ -33,8 +33,23 @@ struct RecipeListView: View {
                     RecipeList(recipes: loadedState.recipes)
                 }
             }
+            .animation(.smooth, value: vm.viewState)
+            .transition(.opacity)
             .padding()
-            .navigationTitle("Recipes")
+            .toolbar {
+                ToolbarItem(placement: .topBarLeading) {
+                    Text("Recipes")
+                        .font(.headline)
+                }
+
+                ToolbarItem(placement: .topBarTrailing) {
+                    Button {
+                        vm.dispatch(.refresh)
+                    } label: {
+                        Image(systemName: "arrow.clockwise")
+                    }
+                }
+            }
         }
         .onAppear {
             vm.dispatch(.onAppear)
@@ -81,7 +96,7 @@ fileprivate extension RecipeListView {
                 .safeAreaInset(edge: .bottom) {
                     Rectangle()
                         .tint(.primary)
-                        .frame(width: .infinity, height: 2)
+                        .frame(height: 2)
                 }
             }
         }
@@ -171,7 +186,8 @@ fileprivate extension RecipeListView {
 // Loaded View
 #Preview("Loaded State") {
     let vm = PresentationContainer.shared.recipeListVM()
-    vm.viewState = .loaded(.init(recipes: Recipe.previewData))
+    let previewData: [Recipe] = Recipe.previewData
+    vm.viewState = .loaded(.init(recipes: previewData, cuisinesList: previewData.cuisinesList) )
     return RecipeListView()
 }
 #endif

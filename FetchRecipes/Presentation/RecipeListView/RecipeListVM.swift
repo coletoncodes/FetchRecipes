@@ -21,12 +21,14 @@ class RecipeListVM: ObservableObject {
     @Published var viewState: PresentationState = .empty
     @Published var selectedCuisine: String? = nil  // Track selected cuisine for filtering
 
+    private var allRecipes: [Recipe] = []
+    private var allCuisines: [String] {
+        allRecipes.cuisinesList
+    }
+
     struct LoadedState: Equatable {
         let recipes: [Recipe]
-
-        var cuisinesList: [String] {
-            recipes.cuisinesList
-        }
+        let cuisinesList: [String]
     }
 
     enum PresentationState: Equatable {
@@ -59,7 +61,8 @@ class RecipeListVM: ObservableObject {
         Task { @MainActor in
             do {
                 let recipes = try await fetchRecipesUseCase.fetchRecipes()
-                viewState = recipes.isEmpty ? .empty : .loaded(LoadedState(recipes: recipes))
+                allRecipes = recipes  // Store the full list of recipes
+                applyFilter()         // Apply filter if any cuisine is selected
             } catch {
                 log("Failed to fetch recipes with error: \(error.localizedDescription)", .error, .viewModel)
                 viewState = .error(makeErrorState(message: "Would you like to try again?", retryAction: self.fetchRecipes))
@@ -72,7 +75,8 @@ class RecipeListVM: ObservableObject {
         Task { @MainActor in
             do {
                 let recipes = try await refreshRecipesUseCase.refreshRecipes()
-                viewState = recipes.isEmpty ? .empty : .loaded(LoadedState(recipes: recipes))
+                allRecipes = recipes  // Store the full list of recipes
+                applyFilter()         // Apply filter if any cuisine is selected
             } catch {
                 log("Failed to refresh recipes with error: \(error.localizedDescription)", .error, .viewModel)
                 viewState = .error(makeErrorState(message: "Would you like to try again?", retryAction: self.refreshRecipes))
@@ -81,18 +85,15 @@ class RecipeListVM: ObservableObject {
     }
 
     private func applyFilter() {
-        guard case .loaded(let loadedState) = viewState else { return }
-        let recipes = loadedState.recipes
-
-        Task { @MainActor in
-            // Filter recipes based on selected cuisine or show all
-            if let cuisine = selectedCuisine, !cuisine.isEmpty {
-                let filteredRecipes = recipes.filter { $0.cuisine == cuisine }
-                viewState = .loaded(LoadedState(recipes: filteredRecipes))
-            } else {
-                viewState = .loaded(loadedState)
-            }
+        // Filter recipes based on selected cuisine or show all
+        let filteredRecipes: [Recipe]
+        if let cuisine = selectedCuisine, !cuisine.isEmpty {
+            filteredRecipes = allRecipes.filter { $0.cuisine == cuisine }
+        } else {
+            filteredRecipes = allRecipes  // Show all recipes if no cuisine is selected
         }
+
+        viewState = filteredRecipes.isEmpty ? .empty : .loaded(LoadedState(recipes: filteredRecipes, cuisinesList: self.allCuisines))
     }
 
     private func makeErrorState(message: String, retryAction: @escaping () -> Void) -> ErrorState {
